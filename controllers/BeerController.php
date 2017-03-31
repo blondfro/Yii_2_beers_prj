@@ -51,7 +51,7 @@ class BeerController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->render('individualBeer', [
             'model' => $this->findModel($id),
         ]);
     }
