@@ -25,7 +25,7 @@ use Yii;
  * @property string $brewery_url
  * @property string $brewery_country
  */
-class Beers extends \yii\db\ActiveRecord
+class Beer extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
