@@ -21,6 +21,10 @@ body {
     padding-top: 20px;
 }
 
+.panel-heading {
+    font-size: large;
+}
+
 .jumbotron {
     text-align: center;
     background-color: transparent;
