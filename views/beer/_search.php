@@ -19,25 +19,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'beer_name') ?>
 
-    <?= $form->field($model, 'brewery_name') ?>
-
     <?= $form->field($model, 'beer_type') ?>
+
+    <?= $form->field($model, 'beer_type_id') ?>
 
     <?= $form->field($model, 'beer_abv') ?>
 
     <?php // echo $form->field($model, 'beer_ibu') ?>
 
     <?php // echo $form->field($model, 'comment') ?>
-
-    <?php // echo $form->field($model, 'venue_name') ?>
-
-    <?php // echo $form->field($model, 'venue_city') ?>
-
-    <?php // echo $form->field($model, 'venue_state') ?>
-
-    <?php // echo $form->field($model, 'venue_lat') ?>
-
-    <?php // echo $form->field($model, 'venue_lng') ?>
 
     <?php // echo $form->field($model, 'rating_score') ?>
 
@@ -47,9 +37,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'beer_url') ?>
 
-    <?php // echo $form->field($model, 'brewery_url') ?>
+    <?php // echo $form->field($model, 'brewery_id') ?>
 
-    <?php // echo $form->field($model, 'brewery_country') ?>
+    <?php // echo $form->field($model, 'venue_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

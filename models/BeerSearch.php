@@ -18,9 +18,9 @@ class BeerSearch extends Beer
     public function rules()
     {
         return [
-            [['id', 'beer_ibu'], 'integer'],
-            [['beer_name', 'brewery_name', 'beer_type', 'comment', 'venue_name', 'venue_city', 'venue_state', 'created_at', 'checkin_url', 'beer_url', 'brewery_url', 'brewery_country'], 'safe'],
-            [['beer_abv', 'venue_lat', 'venue_lng', 'rating_score'], 'number'],
+            [['id', 'beer_type_id', 'beer_ibu', 'brewery_id', 'venue_id'], 'integer'],
+            [['beer_name', 'beer_type', 'comment', 'created_at', 'checkin_url', 'beer_url'], 'safe'],
+            [['beer_abv', 'rating_score'], 'number'],
         ];
     }
 
@@ -61,25 +61,20 @@ class BeerSearch extends Beer
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'beer_type_id' => $this->beer_type_id,
             'beer_abv' => $this->beer_abv,
             'beer_ibu' => $this->beer_ibu,
-            'venue_lat' => $this->venue_lat,
-            'venue_lng' => $this->venue_lng,
             'rating_score' => $this->rating_score,
             'created_at' => $this->created_at,
+            'brewery_id' => $this->brewery_id,
+            'venue_id' => $this->venue_id,
         ]);
 
         $query->andFilterWhere(['like', 'beer_name', $this->beer_name])
-            ->andFilterWhere(['like', 'brewery_name', $this->brewery_name])
             ->andFilterWhere(['like', 'beer_type', $this->beer_type])
             ->andFilterWhere(['like', 'comment', $this->comment])
-            ->andFilterWhere(['like', 'venue_name', $this->venue_name])
-            ->andFilterWhere(['like', 'venue_city', $this->venue_city])
-            ->andFilterWhere(['like', 'venue_state', $this->venue_state])
             ->andFilterWhere(['like', 'checkin_url', $this->checkin_url])
-            ->andFilterWhere(['like', 'beer_url', $this->beer_url])
-            ->andFilterWhere(['like', 'brewery_url', $this->brewery_url])
-            ->andFilterWhere(['like', 'brewery_country', $this->brewery_country]);
+            ->andFilterWhere(['like', 'beer_url', $this->beer_url]);
 
         return $dataProvider;
     }
