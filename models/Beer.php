@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\BeerType;
 
 /**
  * This is the model class for table "beers".
@@ -58,6 +59,7 @@ class Beer extends \yii\db\ActiveRecord
             'beer_name' => 'Beer Name',
             'beer_type' => 'Beer Type',
             'beer_type_id' => 'Beer Type ID',
+            'beerTypeBlah' => 'Beer type',
             'beer_abv' => 'Beer Abv',
             'beer_ibu' => 'Beer Ibu',
             'comment' => 'Comment',
@@ -69,4 +71,15 @@ class Beer extends \yii\db\ActiveRecord
             'venue_id' => 'Venue ID',
         ];
     }
+
+
+
+    /*
+ * One-to-many getter to retrieve the attributes of the LocationType model from locationTypeID foreign key in Restaurant model
+ */
+    public function getBeerType()
+    {
+        return $this->hasOne(BeerType::className(), ['id' => 'beer_type_id']);
+    }
+
 }
