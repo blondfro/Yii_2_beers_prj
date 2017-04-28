@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\BeerType;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BeerSearch */
@@ -24,11 +26,33 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'beer_name',
-            'beer_type',
-            'beer_type_id',
+            // 'beer_type',
+            // 'beer_type_id',
             'beer_abv',
+
+            [
+                'attribute' => 'beerTypeBlah',
+                'value' => function($james) {
+                    return $james->beerType->name;
+                },
+                'filter' => Html::activeDropDownList($searchModel,
+                    'beer_type_id', ArrayHelper::map(BeerType::find()
+                        ->asArray()
+                        ->distinct()
+                        ->orderBy('name')
+                        ->all(),
+                    'id', 'name'),
+                    [
+                        'class'=>'form-control',
+                        'prompt' => 'All',
+                    ]
+                ),
+                'contentOptions' => ['style' => 'width: 300px;'],
+
+            ],
+
             // 'beer_ibu',
             // 'comment',
             // 'rating_score',
