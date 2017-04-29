@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\BeerType;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Beer */
@@ -14,9 +16,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'beer_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'beer_type')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'beer_type_id')->textInput() ?>
+    <? //= $form->field($model, 'beer_type')->textInput(['maxlength' => true]) ?>
+    <? //= $form->field($model, 'beer_type_id')->textInput() ?>
+    <?= $form->field($model, 'beer_type_id')
+        ->dropDownList(
+            ArrayHelper::map(
+                BeerType::find()
+                    ->asArray()
+                    ->orderBy('name')
+                    ->all(),
+                'id', 'name'),
+            [
+                'prompt' => 'What type of beer is this?',
+            ])
+        ->label('Beer type');
+    ?>
 
     <?= $form->field($model, 'beer_abv')->textInput(['maxlength' => true]) ?>
 
