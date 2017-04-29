@@ -59,7 +59,7 @@ class Beer extends \yii\db\ActiveRecord
             'beer_name' => 'Beer Name',
             'beer_type' => 'Beer Type',
             'beer_type_id' => 'Beer Type ID',
-            'beerTypeBlah' => 'Beer type',
+            'beerTypeName' => 'Beer type',
             'beer_abv' => 'Beer Abv',
             'beer_ibu' => 'Beer Ibu',
             'comment' => 'Comment',
