@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'beer_ibu',
             'comment',
             'rating_score',
-            'created_at',
+            'created_at:datetime',
             'checkin_url:url',
             'beer_url:url',
             'brewery_id',
