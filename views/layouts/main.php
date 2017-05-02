@@ -37,7 +37,15 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Beers', 'url' => ['./beer/index']],
+            ['label' => 'Manage',
+                'items' => [
+                        ['label' => 'Beers', 'url' => ['./beer/index']],
+                        ['label' => 'Breweries', 'url' => ['./brewery/index']],
+                        ['label' => 'Venues', 'url' => ['./venue/index']],
+                        ['label' => 'Beer Types', 'url' => ['./beer-type/index']],
+                        ['label' => 'Countries', 'url' => ['./country/index']],
+
+                ]],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
