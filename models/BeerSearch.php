@@ -42,13 +42,39 @@ class BeerSearch extends Beer
      */
     public function search($params)
     {
-        $query = Beer::find();
+        $query = Beer::find()
+            ->joinWith('beerType'); /* this is name of the relation in Beers model */
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+
+        /* Custom sorting for custom attributes */
+        $dataProvider->setSort([
+            'attributes' => [
+                'beer_name',
+                'beer_abv',
+
+                'beerTypeName' => [
+                    'asc' => ['beer_type.name' => SORT_ASC],
+                    'desc' => ['beer_type.name' => SORT_DESC],
+                    'default' => SORT_ASC
+                ],
+            ],
+
+            /* by default, sort resultset by beer_name ASC */
+            'defaultOrder' => [
+                'beer_name' => SORT_ASC,
+            ],
+
+        ]);
+
+
+
+
 
         $this->load($params);
 

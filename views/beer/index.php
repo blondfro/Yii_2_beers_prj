@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'beer_abv',
 
             [
-                'attribute' => 'beerTypeBlah',
+                'attribute' => 'beerTypeName',
                 'value' => function($james) {
                     return $james->beerType->name;
                 },

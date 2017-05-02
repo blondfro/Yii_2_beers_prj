@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Beer */
 
-$this->title = $model->id;
+$this->title = $model->beer_name;
 $this->params['breadcrumbs'][] = ['label' => 'Beers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,15 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            // 'id',
             'beer_name',
-            'beer_type',
-            'beer_type_id',
+
+            // 'beer_type',
+            // 'beer_type_id',
+            'beerType.name',
+
             'beer_abv',
             'beer_ibu',
             'comment',
             'rating_score',
-            'created_at',
+            'created_at:datetime',
             'checkin_url:url',
             'beer_url:url',
             'brewery_id',
