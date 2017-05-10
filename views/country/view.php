@@ -24,13 +24,31 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-1">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'id'
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col-md-5">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'name:ntext',
+                        ],
+                    ]) ?>
+                </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'name:ntext',
-        ],
-    ]) ?>
+            </div>
+        </div>
+    </div>
+
+
 
 </div>

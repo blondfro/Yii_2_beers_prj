@@ -24,17 +24,66 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'id'
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col-md-4">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'name'
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col-md-4">
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'name',
-            'city',
-            'state',
-            'latitude',
-            'longitude',
-        ],
-    ]) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'city'
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col-md-4">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'state'
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col-md-2">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'latitude'
+                        ],
+                    ]) ?>
+                </div>
+                <div class="col-md-2">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'longitude'
+                        ],
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
