@@ -43,6 +43,7 @@ class BeerBrewerySearch extends Brewery
     {
         $query = Brewery::find();
         $query->joinWith(['country']);
+        // We could have used this if we didn't have the getCountries() getter in Brewery model
         // $query->innerJoin("countries", "countries.id = breweries.countryId");
 
 
