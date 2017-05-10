@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\BeerType;
+use app\models\Brewery;
 
 /**
  * This is the model class for table "beers".
@@ -80,6 +81,21 @@ class Beer extends \yii\db\ActiveRecord
     public function getBeerType()
     {
         return $this->hasOne(BeerType::className(), ['id' => 'beer_type_id']);
+    }
+
+    public function getBreweryName()
+    {
+        return $this->hasOne(BeerType::className(), ['id' => 'brewery_id']);
+    }
+
+    public function getVenueName()
+    {
+        return $this->hasOne(BeerType::className(), ['id' => 'venue_id']);
+    }
+
+    public function getCountryName()
+    {
+        return $this->hasOne(BeerType::className(), ['id' => 'country_id']);
     }
 
 }

@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\BeerType;
+use app\models\Brewery;
+use app\models\Venue;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -17,9 +19,11 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'beer_name')
         ->textInput(['maxlength' => true])
     ?>
-
-    <? //= $form->field($model, 'beer_type')->textInput(['maxlength' => true]) ?>
-    <? //= $form->field($model, 'beer_type_id')->textInput() ?>
+<!--
+    <? $form->field($model, 'beer_type')->
+    textInput(['maxlength' => true]) ?>
+    <? $form->field($model, 'beer_type_id')->textInput() ?>
+    -->
     <?= $form->field($model, 'beer_type_id')
         ->dropDownList(
             ArrayHelper::map(
@@ -71,13 +75,42 @@ use yii\helpers\ArrayHelper;
             'maxlength' => true,
         ])
     ?>
-
+<!--
     <?= $form->field($model, 'brewery_id')
         ->textInput()
     ?>
+-->
+    <?= $form->field($model, 'brewery_id')
+        ->dropDownList(
+            ArrayHelper::map(
+                Brewery::find()
+                    ->asArray()
+                    ->orderBy('name')
+                    ->all(),
+                'id', 'name'),
+            [
+                'prompt' => 'What brewery does this come from',
+            ])
+        ->label('Brewery');
+    ?>
 
+    <!--
     <?= $form->field($model, 'venue_id')
         ->textInput()
+    ?>
+    -->
+    <?= $form->field($model, 'venue_id')
+        ->dropDownList(
+            ArrayHelper::map(
+                Venue::find()
+                    ->asArray()
+                    ->orderBy('name')
+                    ->all(),
+                'id', 'name'),
+            [
+                'prompt' => 'What Venue will thies be at?',
+            ])
+        ->label('Venue');
     ?>
 
     <div class="form-group">
