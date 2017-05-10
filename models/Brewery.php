@@ -14,6 +14,11 @@ use Yii;
  */
 class Brewery extends \yii\db\ActiveRecord
 {
+
+    public $countryName;
+
+
+
     /**
      * @inheritdoc
      */
@@ -43,8 +48,19 @@ class Brewery extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'countryId' => 'Country ID',
-            'name' => 'Name',
+            'countryName' => 'Country name',
+            'name' => 'Brewery name',
             'url' => 'Url',
         ];
     }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountry()
+    {
+        return $this->hasOne(Country::className(), ['id' => 'countryId']);
+    }
+
 }

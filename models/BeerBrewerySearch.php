@@ -19,7 +19,7 @@ class BeerBrewerySearch extends Brewery
     {
         return [
             [['id', 'countryId'], 'integer'],
-            [['name', 'url'], 'safe'],
+            [['name', 'countryName', 'url'], 'safe'],
         ];
     }
 
@@ -42,12 +42,39 @@ class BeerBrewerySearch extends Brewery
     public function search($params)
     {
         $query = Brewery::find();
+        $query->joinWith(['country']);
+        // $query->innerJoin("countries", "countries.id = breweries.countryId");
+
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+
+        /* Custom sorting for custom attributes */
+        $dataProvider->setSort([
+            'attributes' => [
+                'name',
+                'url',
+            ],
+
+            'defaultOrder' => [
+                'name' => SORT_ASC,
+            ]
+        ]);
+
+
+        // Adding a custom sort for my joined attributes
+        // The table is the one our relation is configured to
+        $dataProvider->sort->attributes['countryName'] = [
+            'asc' => ['countries.name' => SORT_ASC],
+            'desc' => ['countries.name' => SORT_DESC],
+        ];
+
+
+
 
         $this->load($params);
 
@@ -64,7 +91,8 @@ class BeerBrewerySearch extends Brewery
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'url', $this->url]);
+            ->andFilterWhere(['like', 'url', $this->url])
+            ->andFilterWhere(['like', 'countries.name', $this->countryName]);
 
         return $dataProvider;
     }
