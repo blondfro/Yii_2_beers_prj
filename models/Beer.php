@@ -93,9 +93,6 @@ class Beer extends \yii\db\ActiveRecord
         return $this->hasOne(BeerType::className(), ['id' => 'venue_id']);
     }
 
-    public function getCountryName()
-    {
-        return $this->hasOne(BeerType::className(), ['id' => 'country_id']);
-    }
+
 
 }
