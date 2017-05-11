@@ -50,14 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'id'
-                        ],
-                    ]) ?>
-                </div>
-                <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
                             //'countryId'
                             'country.name'
                         ],
