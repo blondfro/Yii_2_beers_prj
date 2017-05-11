@@ -12,7 +12,19 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Details</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'name')->textInput
+                    (['maxlength' => true]) ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
