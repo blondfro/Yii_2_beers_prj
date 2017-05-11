@@ -13,26 +13,48 @@ use yii\helpers\ArrayHelper;
 <div class="brewery-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Details</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'name')->textInput
+                    (['maxlength' => true]) ?>
+
+                </div>
+                <div class="col-md-4">
+                    <?= $form->field($model, 'url')->textInput
+                    (['maxlength' => true]) ?>
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'countryId')
+                        ->dropDownList(
+                            ArrayHelper::map(
+                                Country::find()
+                                    ->asArray()
+                                    ->orderBy('name')
+                                    ->all(),
+                                'id', 'name'),
+                            [
+                                'prompt' => 'What country is this brewery in',
+                            ])
+                        ->label('Country');
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--
     <?= $form->field($model, 'countryId')->textInput() ?>
 -->
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'countryId')
-        ->dropDownList(
-            ArrayHelper::map(
-                Country::find()
-                    ->asArray()
-                    ->orderBy('name')
-                    ->all(),
-                'id', 'name'),
-            [
-                'prompt' => 'What country is this brewery in',
-            ])
-        ->label('Venue');
-    ?>
 
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">
