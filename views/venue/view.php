@@ -32,23 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'id'
-                        ],
-                    ]) ?>
-                </div>
-                <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
                             'name'
                         ],
                     ]) ?>
                 </div>
-                <div class="col-md-4">
-
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-4">
                     <?= DetailView::widget([
                         'model' => $model,
@@ -65,6 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-md-2">
                     <?= DetailView::widget([
                         'model' => $model,
