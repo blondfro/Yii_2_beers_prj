@@ -44,7 +44,7 @@ class Venue extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Venue Name',
             'city' => 'City',
             'state' => 'State',
             'latitude' => 'Latitude',

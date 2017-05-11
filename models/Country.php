@@ -38,7 +38,7 @@ class Country extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Country Name',
         ];
     }
 }

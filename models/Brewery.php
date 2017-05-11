@@ -48,8 +48,8 @@ class Brewery extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'countryId' => 'Country ID',
-            'countryName' => 'Country name',
-            'name' => 'Brewery name',
+            'countryName' => 'Country Name',
+            'name' => 'Brewery Name',
             'url' => 'Url',
         ];
     }
