@@ -12,15 +12,45 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Details</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'name')->
+                    textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-4">
+                    <?= $form->field($model, 'city')->
+                    textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'state')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-4">
+                    <?= $form->field($model, 'state')->
+                    textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <?= $form->field($model, 'latitude')->
+                    textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-2">
+                    <?= $form->field($model, 'longitude')->
+                    textInput(['maxlength' => true]) ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
