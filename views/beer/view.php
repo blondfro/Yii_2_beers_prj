@@ -77,14 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                 </div>
-                <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'brewery_id'
-                        ],
-                    ]) ?>
-                </div>
+
             </div>
 
             <div class="row">
@@ -97,12 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
                 </div>
                 <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'rating_score',
-                        ],
-                    ]) ?>
+
                 </div>
             </div>
 
@@ -117,7 +105,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'brewery_id'
+                            //'brewery_id'
+                            'breweryName.name'
                         ],
                     ]) ?>
                 </div>

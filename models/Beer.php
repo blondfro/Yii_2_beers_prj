@@ -70,6 +70,7 @@ class Beer extends \yii\db\ActiveRecord
             'checkin_url' => 'Checkin Url',
             'beer_url' => 'Beer Url',
             'brewery_id' => 'Brewery ID',
+            'breweryName' => 'Brewery Name',
             'venue_id' => 'Venue ID',
         ];
     }

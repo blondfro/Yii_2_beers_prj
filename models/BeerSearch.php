@@ -43,7 +43,9 @@ class BeerSearch extends Beer
     public function search($params)
     {
         $query = Beer::find()
-            ->joinWith('beerType'); /* this is name of the relation in Beers model */
+            ->joinWith('beerType')
+            ->joinWith('breweryName'); /* this is name of the relation in Beers model */
+
 
         // add conditions that should always apply here
 
@@ -59,6 +61,11 @@ class BeerSearch extends Beer
                 'beer_abv',
 
                 'beerTypeName' => [
+                    'asc' => ['beer_type.name' => SORT_ASC],
+                    'desc' => ['beer_type.name' => SORT_DESC],
+                    'default' => SORT_ASC
+                ],
+                'breweryName' => [
                     'asc' => ['beer_type.name' => SORT_ASC],
                     'desc' => ['beer_type.name' => SORT_DESC],
                     'default' => SORT_ASC

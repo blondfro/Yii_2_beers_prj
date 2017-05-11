@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\BeerType;
+use app\models\Brewery;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -44,6 +45,27 @@ $this->params['breadcrumbs'][] = $this->title;
                         ->orderBy('name')
                         ->all(),
                     'id', 'name'),
+                    [
+                        'class'=>'form-control',
+                        'prompt' => 'All',
+                    ]
+                ),
+                'contentOptions' => ['style' => 'width: 300px;'],
+
+            ],
+
+            [
+                'attribute' => 'breweryName',
+                'value' => function($james) {
+                    return $james->breweryName->name;
+                },
+                'filter' => Html::activeDropDownList($searchModel,
+                    'brewery_id', ArrayHelper::map(Brewery::find()
+                        ->asArray()
+                        ->distinct()
+                        ->orderBy('name')
+                        ->all(),
+                        'id', 'name'),
                     [
                         'class'=>'form-control',
                         'prompt' => 'All',
