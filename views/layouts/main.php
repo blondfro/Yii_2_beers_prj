@@ -39,11 +39,11 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Manage',
                 'items' => [
-                        ['label' => 'Beers', 'url' => ['./beer/index']],
-                        ['label' => 'Breweries', 'url' => ['./brewery/index']],
-                        ['label' => 'Venues', 'url' => ['./venue/index']],
-                        ['label' => 'Beer Types', 'url' => ['./beer-type/index']],
-                        ['label' => 'Countries', 'url' => ['./country/index']],
+                    ['label' => 'Beers', 'url' => ['./beer/index']],
+                    ['label' => 'Beer Types', 'url' => ['./beer-type/index']],
+                    ['label' => 'Breweries', 'url' => ['./brewery/index']],
+                    ['label' => 'Venues', 'url' => ['./venue/index']],
+                    ['label' => 'Countries', 'url' => ['./country/index']],
 
                 ]],
             ['label' => 'About', 'url' => ['/site/about']],
