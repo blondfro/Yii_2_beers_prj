@@ -72,6 +72,7 @@ class Beer extends \yii\db\ActiveRecord
             'brewery_id' => 'Brewery ID',
             'breweryName' => 'Brewery Name',
             'venue_id' => 'Venue ID',
+            'venueName' => 'Venue Name',
         ];
     }
 

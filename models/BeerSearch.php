@@ -44,7 +44,8 @@ class BeerSearch extends Beer
     {
         $query = Beer::find()
             ->joinWith('beerType')
-            ->joinWith('breweryName'); /* this is name of the relation in Beers model */
+            ->joinWith('breweryName')
+            ->joinWith('venueName'); /* this is name of the relation in Beers model */
 
 
         // add conditions that should always apply here
@@ -66,8 +67,8 @@ class BeerSearch extends Beer
                     'default' => SORT_ASC
                 ],
                 'breweryName' => [
-                    'asc' => ['beer_type.name' => SORT_ASC],
-                    'desc' => ['beer_type.name' => SORT_DESC],
+                    'asc' => ['brewery.name' => SORT_ASC],
+                    'desc' => ['brewery.name' => SORT_DESC],
                     'default' => SORT_ASC
                 ],
             ],
