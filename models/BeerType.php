@@ -38,7 +38,7 @@ class BeerType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Beer Type',
         ];
     }
 }
