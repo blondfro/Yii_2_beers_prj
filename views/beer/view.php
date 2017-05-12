@@ -13,22 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="beer-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Primary Details</h3>
+        <div class="panel-heading small">
+            <div class="panel-title">
+                <h1><?= Html::encode($this->title) ?></h1>
+            </div>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -151,5 +140,17 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger pull-right',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
 
 </div>

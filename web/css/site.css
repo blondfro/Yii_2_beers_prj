@@ -117,3 +117,9 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+/* Custom styles for app */
+div.small {
+    padding-top: 1px;
+    padding-bottom: 5px;
+}
