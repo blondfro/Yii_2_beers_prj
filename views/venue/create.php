@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Venue */
 
-$this->title = 'Create Venue';
+$this->title = 'Create a New Venue';
 $this->params['breadcrumbs'][] = ['label' => 'Venues', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

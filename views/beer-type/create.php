@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\BeerType */
 
-$this->title = 'Create Beer Type';
+$this->title = 'Create a New Beer Type';
 $this->params['breadcrumbs'][] = ['label' => 'Beer Types', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
