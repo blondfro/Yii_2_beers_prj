@@ -58,7 +58,7 @@ class BeerBrewerySearch extends Brewery
         $dataProvider->setSort([
             'attributes' => [
                 'name',
-                'url',
+                // 'url', /* Disables the sort on url attribute bc it doesn't really make sense to sort on this */
             ],
 
             'defaultOrder' => [
