@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'breweryName',
                 'value' => function($james) {
-                    return $james->breweryName->name;
+                    return $james->brewery->name;
                 },
                 'filter' => Html::activeDropDownList($searchModel,
                     'brewery_id', ArrayHelper::map(Brewery::find()

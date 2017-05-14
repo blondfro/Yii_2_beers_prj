@@ -95,7 +95,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                         'attributes' => [
                             //'brewery_id'
-                            'breweryName.name'
+                            [
+                                'attribute' => 'breweryName',
+                                'value' => function ($model) {
+                                    return $model->brewery->name;
+                                },
+                            ],
+
                         ],
                     ]) ?>
                 </div>
@@ -104,7 +110,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                         'attributes' => [
                             //'venue_id',
-                            'venueName.name'
+
+                            [
+                                'attribute' => 'venueName',
+                                'value' => function ($data) {
+                                    return Html::a($data->venue->name, ['venue/view', 'id' => $data->venue_id]);
+                                },
+                                'format' => 'html',
+                            ],
+
                         ],
                     ]) ?>
                 </div>
@@ -130,7 +144,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                           'checkin_url:url'
+                            'checkin_url:url',
+                            [
+                                'attribute' => 'checkin_url',
+                                'value' => function ($data) {
+                                    return Html::a($data->checkin_url, $data->checkin_url, [
+                                        'title' => 'Title Tag',
+                                        'target' => '_blank',
+                                        'alt' => 'Alt Tag',
+                                    ]);
+                                },
+                                'format' => 'raw',
+                            ],
                         ],
                     ]) ?>
                 </div>
