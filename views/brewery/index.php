@@ -28,10 +28,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'id',
-            //'countryId',
+            // 'id',
+            // 'countryId',
             'name',
-            'url:url',
+
+            // 'url:url',
+            [
+                'attribute' => 'url',
+                'value' => function ($data) {
+                    if (!empty($data->url)) {
+                        return Html::a("<span class='glyphicon glyphicon-globe'></span>", $data->url, [
+                            'target' => '_blank',
+                        ]);
+                    }
+                },
+                'format' => 'raw',
+                'filter' => '', /* Disables filter on this column from $searchModel */
+                'contentOptions' => [
+                    'style' => 'text-align: center; width: 30px;',
+                ],
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
