@@ -26,6 +26,11 @@ use app\models\Venue;
  */
 class Beer extends \yii\db\ActiveRecord
 {
+
+    public $breweryName;
+    public $venueName;
+
+
     /**
      * @inheritdoc
      */
@@ -79,19 +84,19 @@ class Beer extends \yii\db\ActiveRecord
 
 
     /*
- * One-to-many getter to retrieve the attributes of the LocationType model from locationTypeID foreign key in Restaurant model
+ * One-to-many getter to retrieve the attributes of another model from foreign key in Beer model
  */
     public function getBeerType()
     {
         return $this->hasOne(BeerType::className(), ['id' => 'beer_type_id']);
     }
 
-    public function getBreweryName()
+    public function getBrewery()
     {
         return $this->hasOne(Brewery::className(), ['id' => 'brewery_id']);
     }
 
-    public function getVenueName()
+    public function getVenue()
     {
         return $this->hasOne(Venue::className(), ['id' => 'venue_id']);
     }

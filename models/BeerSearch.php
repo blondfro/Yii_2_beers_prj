@@ -44,8 +44,8 @@ class BeerSearch extends Beer
     {
         $query = Beer::find()
             ->joinWith('beerType')
-            ->joinWith('breweryName')
-            ->joinWith('venueName'); /* this is name of the relation in Beers model */
+            ->joinWith('brewery')
+            ->joinWith('venue'); /* this is name of the relation in Beers model */
 
 
         // add conditions that should always apply here
