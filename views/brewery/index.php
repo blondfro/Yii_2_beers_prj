@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'url:url',
             [
                 'attribute' => 'url',
+                'label' => 'URL',
                 'value' => function ($data) {
                     if (!empty($data->url)) {
                         return Html::a("<span class='glyphicon glyphicon-globe'></span>", $data->url, [

@@ -91,7 +91,25 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'rating_score',
             // 'created_at',
             // 'checkin_url:url',
+
             // 'beer_url:url',
+            [
+                'attribute' => 'beer_url',
+                'label' => 'URL',
+                'value' => function ($data) {
+                    if (!empty($data->beer_url)) {
+                        return Html::a("<span class='glyphicon glyphicon-globe'></span>", $data->beer_url, [
+                            'target' => '_blank',
+                        ]);
+                    }
+                },
+                'format' => 'raw',
+                'filter' => '', /* Disables filter on this column from $searchModel */
+                'contentOptions' => [
+                    'style' => 'text-align: center; width: 30px;',
+                ],
+            ],
+
             // 'brewery_id',
             // 'venue_id',
 
