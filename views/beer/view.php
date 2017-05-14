@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                         'attributes' => [
                             // 'id',
-                            'beer_name'
+                            'beer_name',
                         ],
                     ]) ?>
                 </div>
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attributes' => [
                             // 'beer_type',
                             // 'beer_type_id',
-                            'beerType.name'
+                            'beerType.name',
                         ],
                     ]) ?>
                 </div>
@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'rating_score'
+                            'rating_score',
                         ],
                     ]) ?>
                 </div>
@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'comment'
+                            'comment',
                         ],
                     ]) ?>
                 </div>
@@ -126,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'beer_url:url'
+                            'beer_url:url',
                         ],
                     ]) ?>
                 </div>
@@ -136,7 +136,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'created_at:datetime'
+                            'created_at:datetime',
+                            'last_modified:datetime',
                         ],
                     ]) ?>
                 </div>

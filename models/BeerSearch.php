@@ -24,6 +24,7 @@ class BeerSearch extends Beer
         ];
     }
 
+
     /**
      * @inheritdoc
      */

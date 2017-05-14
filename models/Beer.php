@@ -6,6 +6,9 @@ use Yii;
 use app\models\BeerType;
 use app\models\Brewery;
 use app\models\Venue;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "beers".
@@ -19,6 +22,7 @@ use app\models\Venue;
  * @property string $comment
  * @property string $rating_score
  * @property string $created_at
+ * @property string $last_modified
  * @property string $checkin_url
  * @property string $beer_url
  * @property integer $brewery_id
@@ -39,20 +43,93 @@ class Beer extends \yii\db\ActiveRecord
         return 'beers';
     }
 
+
+    /**
+     * @return array
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'last_modified'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['last_modified'],
+                ],
+                'value' => new Expression("NOW()"),
+            ],
+        ];
+    }
+
+
+
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['beer_type_id', 'beer_ibu', 'brewery_id', 'venue_id'], 'integer'],
-            [['beer_abv', 'rating_score'], 'number'],
-            [['created_at'], 'safe'],
-            [['brewery_id', 'venue_id'], 'required'],
-            [['beer_name'], 'string', 'max' => 64],
-            [['beer_type'], 'string', 'max' => 32],
-            [['comment'], 'string', 'max' => 140],
-            [['checkin_url', 'beer_url'], 'string', 'max' => 31],
+            [
+                [
+                    'beer_type_id',
+                    'beer_ibu',
+                    'brewery_id',
+                    'venue_id',
+                ], 'integer',
+            ],
+
+            [
+                [
+                    'beer_abv',
+                    'rating_score',
+                ], 'number',
+            ],
+
+            [
+                [
+                    'created_at',
+                    'last_modified',
+                ], 'safe',
+            ],
+
+            [
+                [
+                    'brewery_id',
+                    'venue_id',
+                ], 'required',
+            ],
+
+            [
+                [
+                    'beer_name',
+                ], 'string',
+                'max' => 64,
+            ],
+
+            [
+                [
+                    'beer_type',
+                ], 'string',
+                'max' => 32,
+            ],
+
+            [
+                [
+                    'comment',
+                ], 'string',
+                'max' => 140,
+            ],
+
+            [
+                [
+                    'checkin_url',
+                    'beer_url',
+                ], 'string',
+                'max' => 31,
+            ],
+
         ];
     }
 
@@ -71,7 +148,8 @@ class Beer extends \yii\db\ActiveRecord
             'beer_ibu' => 'Beer Ibu',
             'comment' => 'Comment',
             'rating_score' => 'Rating Score',
-            'created_at' => 'Created At',
+            'created_at' => 'Created',
+            'last_modified' => 'Last modified',
             'checkin_url' => 'Checkin Url',
             'beer_url' => 'Beer Url',
             'brewery_id' => 'Brewery ID',

@@ -102,7 +102,7 @@ use yii\helpers\ArrayHelper;
                                     ->all(),
                                 'id', 'name'),
                             [
-                                'prompt' => 'What Venue will thies be at?',
+                                'prompt' => 'What Venue will this be at?',
                             ])
                         ->label('Venue');
                     ?>
@@ -118,9 +118,20 @@ use yii\helpers\ArrayHelper;
             <div class="row">
                 <div class="col-md-4">
                     <?= $form->field($model, 'created_at')
-                        ->textInput()
+                        ->textInput([
+                            'disabled' => true,
+                        ])
                     ?>
                 </div>
+
+                <div class="col-md-4">
+                    <?= $form->field($model, 'last_modified')
+                        ->textInput([
+                            'disabled' => true,
+                        ])
+                    ?>
+                </div>
+
                 <div class="col-md-4">
                     <?= $form->field($model, 'checkin_url')
                         ->textInput([
