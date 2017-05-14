@@ -17,7 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create a New Beer Type', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <?php
+        if ($_SERVER['QUERY_STRING']) {
+            echo Html::a('Reset filters', ['index'], ['class' => 'btn btn-info pull-right']);
+        }
+        ?>    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
