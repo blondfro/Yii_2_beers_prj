@@ -37,6 +37,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             // 'beer_type',
                             // 'beer_type_id',
                             'beerType.name',
+                            [
+                                'attribute' => 'beerType.name',
+                                'value' => function ($data) {
+                                    return Html::a($data->beerType->name, ['beer/index', 'BeerSearch[beer_type_id]' => $data->beer_type_id]);
+                                },
+                                'format' => 'html',
+                            ],
                         ],
                     ]) ?>
                 </div>
