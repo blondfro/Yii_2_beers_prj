@@ -97,12 +97,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             //'brewery_id'
                             [
                                 'attribute' => 'breweryName',
-                                'value' => function ($model) {
-                                    return $model->brewery->name;
+                                'value' => function ($data) {
+                                    return Html::a($data->brewery->name, ['brewery/view', 'id' => $data->brewery_id]);
                                 },
-                            ],
-
+                                'format' => 'html',
+                            ]
                         ],
+
+
                     ]) ?>
                 </div>
                 <div class="col-md-4">
