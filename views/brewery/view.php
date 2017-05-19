@@ -42,7 +42,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                         'attributes' => [
                             //'countryId'
-                            'country.name'
+
+                            // 'country.name',
+                            [
+                                'attribute' => 'country.name',
+                                'value' => function ($data) {
+                                    return Html::a($data->country->name, ['country/view', 'id' => $data->country->id]);
+                                },
+                                'format' => 'html',
+                            ],
+
                         ],
                     ]) ?>
                 </div>
