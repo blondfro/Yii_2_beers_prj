@@ -33,6 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'city',
             'state',
+            [
+                'label' => 'Google Map',
+                'value' => function ($data) {
+                    return Html::a($data->latitude . ", " . $data->longitude, "http://maps.google.com/maps?z=12&t=m&q=loc:" . $data->latitude . "+" . $data->longitude, ['target' => '_blank']);
+                },
+                'format' => 'raw',
+            ],
             //'latitude',
             // 'longitude',
 
