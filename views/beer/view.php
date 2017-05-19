@@ -124,7 +124,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'venueName',
                                 'value' => function ($data) {
-                                    return Html::a($data->venue->name, ['venue/view', 'id' => $data->venue_id]);
+                                    if ($data->venue_id > 0) {
+                                        return Html::a($data->venue->name, ['venue/view', 'id' => $data->venue_id]);
+                                    } else {
+                                        return "Not set";
+                                    }
                                 },
                                 'format' => 'html',
                             ],

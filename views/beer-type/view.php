@@ -47,8 +47,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'beer_name',
+            // 'id',
+            // 'beer_name',
+            [
+                'attribute' => 'beer_name',
+                'value' => function ($data) {
+                    return Html::a($data->beer_name, ['beer/view', 'id' => $data->id]);
+                },
+                'format' => 'html',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
