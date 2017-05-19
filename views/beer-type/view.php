@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\BeerType */
@@ -22,7 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'name'
+                            // 'name',
+                            [
+                                'attribute' => 'name',
+                                'value' => function ($data) {
+                                    return Html::a($data->name, ['beer/index', 'BeerSearch[beer_type_id]' => $data->id]);
+                                },
+                                'format' => 'html',
+                            ],
+
                         ],
                     ]) ?>
                 </div>
@@ -30,6 +39,22 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+
+    <?= GridView::widget([
+        'dataProvider' => $beersOfThisType,
+        // 'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'beer_name',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
