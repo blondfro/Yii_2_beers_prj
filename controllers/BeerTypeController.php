@@ -8,6 +8,9 @@ use app\models\BeerTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Beer;
+use yii\data\ActiveDataProvider;
+
 
 /**
  * BeerTypeController implements the CRUD actions for BeerType model.
@@ -51,8 +54,14 @@ class BeerTypeController extends Controller
      */
     public function actionView($id)
     {
+        $queryBeersOfThisType = new ActiveDataProvider([
+            'query' => Beer::find()
+                ->where(['beer_type_id' => $id]),
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'beersOfThisType' => $queryBeersOfThisType,
         ]);
     }
 
