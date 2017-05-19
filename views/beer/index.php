@@ -40,8 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'beerTypeName',
                 'value' => function($james) {
-                    return $james->beerType->name;
+                    return Html::a($james->beerType->name, [
+                            'beer-type/view',
+                            'id'=>$james->beerType->id,
+                            ],
+                            [
+                    'title' => 'See ' . $james->beerType->name . '\'s details',
+                        ]);
                 },
+                'format' => 'raw',
                 'filter' => Html::activeDropDownList($searchModel,
                     'beer_type_id', ArrayHelper::map(BeerType::find()
                         ->asArray()
