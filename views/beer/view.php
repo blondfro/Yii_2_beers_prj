@@ -36,7 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attributes' => [
                             // 'beer_type',
                             // 'beer_type_id',
-                            'beerType.name',
+
+                            // 'beerType.name',
                             [
                                 'attribute' => 'beerType.name',
                                 'value' => function ($data) {
