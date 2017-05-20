@@ -31,8 +31,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
-            'city',
-            'state',
+
+            [
+                'attribute' => 'city',
+                'value' => function ($data) {
+                    return (!empty($data->city) ? $data->city : "<span class='not-set'>not set</span>");
+                },
+                'format' => 'html',
+            ],
+
+            [
+                'attribute' => 'state',
+                'value' => function ($data) {
+                    return (!empty($data->state) ? $data->state : "<span class='not-set'>not set</span>");
+                },
+                'format' => 'html',
+            ],
+
             [
                 'label' => 'Google Map',
                 'value' => function ($data) {
