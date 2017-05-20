@@ -18,20 +18,19 @@ use yii\helpers\ArrayHelper;
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <?= $form->field($model, 'name')->textInput
-                    (['maxlength' => true]) ?>
-
+                    <?= $form->field($model, 'name')
+                        ->textInput(
+                            ['maxlength' => true])
+                    ?>
                 </div>
+
                 <div class="col-md-4">
-                    <?= $form->field($model, 'url')->textInput
-                    (['maxlength' => true]) ?>
-
+                    <?= $form->field($model, 'url')
+                        ->textInput(
+                            ['maxlength' => true]
+                        ) ?>
                 </div>
-                <div class="col-md-4">
 
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-4">
                     <?= $form->field($model, 'countryId')
                         ->dropDownList(
@@ -50,11 +49,6 @@ use yii\helpers\ArrayHelper;
             </div>
         </div>
     </div>
-<!--
-    <?= $form->field($model, 'countryId')->textInput() ?>
--->
-
-
 
 
     <div class="form-group">
