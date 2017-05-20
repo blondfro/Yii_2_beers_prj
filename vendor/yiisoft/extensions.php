@@ -48,4 +48,22 @@ return array (
                     '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
                 ),
         ),
+    'kartik-v/yii2-krajee-base' =>
+        array(
+            'name' => 'kartik-v/yii2-krajee-base',
+            'version' => '1.8.8.0',
+            'alias' =>
+                array(
+                    '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base',
+                ),
+        ),
+    'kartik-v/yii2-slider' =>
+        array(
+            'name' => 'kartik-v/yii2-slider',
+            'version' => '1.3.2.0',
+            'alias' =>
+                array(
+                    '@kartik/slider' => $vendorDir . '/kartik-v/yii2-slider',
+                ),
+        ),
 );

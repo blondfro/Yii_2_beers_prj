@@ -29,6 +29,11 @@ class ComposerStaticInit5486e20e83ef0d5360b857b6c11c575f
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'k' => 
+        array (
+            'kartik\\slider\\' => 14,
+            'kartik\\base\\' => 12,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
@@ -109,6 +114,14 @@ class ComposerStaticInit5486e20e83ef0d5360b857b6c11c575f
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+        ),
+        'kartik\\slider\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-slider',
+        ),
+        'kartik\\base\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
         ),
         'cebe\\markdown\\' => 
         array (
