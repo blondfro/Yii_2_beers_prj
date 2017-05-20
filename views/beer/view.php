@@ -140,7 +140,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'beer_url:url',
+                            [
+                                'attribute' => 'beer_url',
+                                'value' => function ($data) {
+                                    return Html::a($data->beer_url, $data->beer_url, [
+                                        'title' => 'Title Tag',
+                                        'target' => '_blank',
+                                        'alt' => 'Alt Tag',
+                                    ]);
+                                },
+                                'format' => 'raw',
+                            ],
                         ],
                     ]) ?>
                 </div>
@@ -159,7 +169,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'checkin_url:url',
                             [
                                 'attribute' => 'checkin_url',
                                 'value' => function ($data) {
