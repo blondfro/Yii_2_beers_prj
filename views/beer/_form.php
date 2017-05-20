@@ -6,6 +6,7 @@ use app\models\BeerType;
 use app\models\Brewery;
 use app\models\Venue;
 use yii\helpers\ArrayHelper;
+use kartik\slider\Slider;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Beer */
@@ -55,8 +56,20 @@ use yii\helpers\ArrayHelper;
                 </div>
                 <div class="col-md-4">
                     <?= $form->field($model, 'rating_score')
-                        ->textInput([
-                            'maxlength' => true,
+                        ->widget(Slider::classname(), [
+                            'sliderColor' => Slider::TYPE_PRIMARY,
+                            'handleColor' => Slider::TYPE_PRIMARY,
+                            'pluginOptions' => [
+                                'min' => 0,
+                                'max' => 5,
+                                'step' => 0.5,
+                                'tooltip' => 'always',
+                                // 'handle' => 'custom',
+                                'value' => 3.0,
+                                'selection' => 'after',
+                                // 'ticks' => [1, 2, 3, 4, 5],
+                                // 'ticks_labels' => [1, 2, 3, 4, 5],
+                            ]
                         ])
                     ?>
                 </div>
