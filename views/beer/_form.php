@@ -54,6 +54,7 @@ use kartik\slider\Slider;
                                 'value' => 3.0,
                             ]
                         ])
+                        ->hint('Alcohol By Volume')
                     ?>
                 </div>
             </div>
