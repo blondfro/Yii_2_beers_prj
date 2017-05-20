@@ -35,8 +35,7 @@ class Brewery extends \yii\db\ActiveRecord
         return [
             [['countryId', 'name', 'url'], 'required'],
             [['countryId'], 'integer'],
-            [['name'], 'string', 'max' => 9],
-            [['url'], 'string', 'max' => 255],
+            [['name', 'url'], 'string', 'max' => 255],
         ];
     }
 
