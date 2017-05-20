@@ -42,8 +42,17 @@ use kartik\slider\Slider;
                 </div>
                 <div class="col-md-4">
                     <?= $form->field($model, 'beer_abv')
-                        ->textInput([
-                            'maxlength' => true,
+                        ->widget(Slider::classname(), [
+                            'sliderColor' => Slider::TYPE_PRIMARY,
+                            'handleColor' => Slider::TYPE_PRIMARY,
+                            'pluginOptions' => [
+                                'min' => 2,
+                                'max' => 12,
+                                'step' => 0.01,
+                                'precision' => 2,
+                                'tooltip' => 'always',
+                                'value' => 3.0,
+                            ]
                         ])
                     ?>
                 </div>
@@ -51,7 +60,21 @@ use kartik\slider\Slider;
             <div class="row">
                 <div class="col-md-4">
                     <?= $form->field($model, 'beer_ibu')
-                        ->textInput()
+                        ->widget(Slider::classname(), [
+                            'sliderColor' => Slider::TYPE_PRIMARY,
+                            'handleColor' => Slider::TYPE_PRIMARY,
+                            'pluginOptions' => [
+                                'min' => 5,
+                                'max' => 120,
+                                'step' => 1,
+                                'tooltip' => 'always',
+                                'value' => 3.0,
+                                'selection' => 'none',
+                                'ticks' => [0, 60, 120],
+                                'ticks_labels' => ["low", "med", "high"],
+                            ]
+                        ])
+                        ->hint('International Bitterness (or bittering) Unit')
                     ?>
                 </div>
                 <div class="col-md-4">
@@ -63,12 +86,10 @@ use kartik\slider\Slider;
                                 'min' => 0,
                                 'max' => 5,
                                 'step' => 0.5,
+                                'precision' => 2,
                                 'tooltip' => 'always',
-                                // 'handle' => 'custom',
                                 'value' => 3.0,
-                                'selection' => 'after',
-                                // 'ticks' => [1, 2, 3, 4, 5],
-                                // 'ticks_labels' => [1, 2, 3, 4, 5],
+                                'selection' => 'before',
                             ]
                         ])
                     ?>
