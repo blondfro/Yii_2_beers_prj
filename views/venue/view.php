@@ -31,7 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'city'
+                            [
+                                'attribute' => 'city',
+                                'value' => function ($data) {
+                                    return (!empty($data->city) ? $data->city : "<span class='not-set'>not set</span>");
+                                },
+                                'format' => 'html',
+                            ],
                         ],
                     ]) ?>
                 </div>
@@ -39,7 +45,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'state'
+                            [
+                                'attribute' => 'state',
+                                'value' => function ($data) {
+                                    return (!empty($data->state) ? $data->state : "<span class='not-set'>not set</span>");
+                                },
+                                'format' => 'html',
+                            ],
                         ],
                     ]) ?>
                 </div>
