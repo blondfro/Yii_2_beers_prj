@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use app\models\BeerType;
 use app\models\Brewery;
 use yii\helpers\ArrayHelper;
+use kartik\slider\Slider;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BeerSearch */
@@ -36,6 +37,32 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'beer_type',
             // 'beer_type_id',
             'beer_abv',
+            [
+                'attribute' => 'beer_abv',
+                'value' => 'beer_abv',
+                'filter' => Slider::widget([
+                    'name' => 'beer_abv',
+                    // 'value' => 0,
+                    'sliderColor' => Slider::TYPE_GREY,
+                    // 'handleColor' => Slider::TYPE_DANGER,
+                    'pluginOptions' => [
+                        // 'handle' => 'triangle',
+                        // 'tooltip' => 'always',
+                        'range' => true,
+                        'min' => 2,
+                        'max' => 12,
+                        'step' => 0.01,
+                        'precision' => 2,
+                    ],
+                    'pluginEvents' => [
+                        'slideStart' => 'function() { console.log("slideStart"); }',
+                        'slide' => 'function() { console.log("slide"); }',
+                        'slideStop' => 'function() { console.log("slideStop"); }',
+                        'slideEnabled' => 'function() { console.log("slideEnabled"); }',
+                        'slideDisabled' => 'function() { console.log("slideDisabled"); }',
+                    ],
+                ])
+            ],
 
             [
                 'attribute' => 'beerTypeName',
