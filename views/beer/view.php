@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\ActiveForm;
+use kartik\slider\Slider;
+
 
 
 /* @var $this yii\web\View */
@@ -12,6 +15,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Beers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="beer-view">
+    <?php $form = ActiveForm::begin(); ?>
 
     <div class="panel panel-primary">
         <div class="panel-heading small">
@@ -66,13 +70,31 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                 </div>
-                <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'rating_score',
-                        ],
-                    ]) ?>
+                <div class="col-md-4" style="padding-top: 20px">
+                <!--    <?//= DetailView::widget([
+//                        'model' => $model,
+//                        'attributes' => [
+//                            'rating_score',
+//                        ],
+//                    ])
+                ?>
+                    -->
+                    <?= $form->field($model, 'rating_score')
+                        ->widget(Slider::classname(), [
+                            'sliderColor' => Slider::TYPE_PRIMARY,
+                            'handleColor' => Slider::TYPE_PRIMARY,
+                            'pluginOptions' => [
+                                'min' => 0,
+                                'max' => 5,
+                                'step' => 0.5,
+                                'precision' => 2,
+                                'tooltip' => 'always',
+                                'value' => 3.0,
+                                'selection' => 'before',
+                            ],
+                            'options' => ['disabled'=>true],
+                        ])
+                    ?>
                 </div>
 
             </div>
