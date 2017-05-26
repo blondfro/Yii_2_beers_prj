@@ -89,14 +89,14 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <!--    this adde in the beers that are available at this venue. -->
+    <!--    this displays all beers that are available at this venue -->
     <?= GridView::widget([
         'dataProvider' => $beersOfThisType,
         // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'beer_name',
 
             ['class' => 'yii\grid\ActionColumn'],
