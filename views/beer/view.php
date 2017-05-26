@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
                     <div class="row">
                         <div class="col-md-5">
-                            Beer Abv:
+                            <h5 style="font-weight: bold">Beer Abv</h5>
                         </div>
                         <div class="col-md-7">
                             <?=
@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="row">
                         <div class="col-md-5">
-                            <h3>Rating Score:</h3>
+                            <h5 style="font-weight: bold">Beer ibu</h5>
                         </div>
                         <div class="col-md-7">
                             <?=
@@ -132,7 +132,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     -->
                     <div class="row">
                         <div class="col-md-5">
-                            Rating Score:
+                            <h5 style="font-weight: bold">Rating Score: </h5>
                         </div>
                         <div class="col-md-7">
                             <?=
