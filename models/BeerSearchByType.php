@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
 /**
  * BeerSearch represents the model behind the search form about `app\models\Beer`.
  */
-class BeerSearch extends Beer
+class BeerSearchByType extends BeerSearch
 {
     /**
      * @inheritdoc
@@ -45,7 +45,10 @@ class BeerSearch extends Beer
         $query = Beer::find()
             ->joinWith('beerType')
             ->joinWith('brewery')
-            ->joinWith('venue'); /* this is name of the relation in Beers model */
+            ->joinWith('venue')/* this is name of the relation in Beers model */
+
+            /* Custom filter for just this type of beer */
+            ->where(['beer_type_id' => $params['id']]);
 
 
         // add conditions that should always apply here
@@ -79,9 +82,6 @@ class BeerSearch extends Beer
             ],
 
         ]);
-
-
-
 
 
         $this->load($params);

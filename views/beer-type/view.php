@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::tag('h3', 'Beers of this type') ?>
     <?= GridView::widget([
         'dataProvider' => $beersOfThisType,
-        // 'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
