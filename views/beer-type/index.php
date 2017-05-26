@@ -30,6 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
+            [
+                'attribute' => 'beerCount',
+                'value' => 'beerCount',
+                'contentOptions' => [
+                    'style' => 'width: 100px;',
+                ],
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
