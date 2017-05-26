@@ -57,6 +57,31 @@ $this->params['breadcrumbs'][] = $this->title;
                             'beer_abv'
                         ],
                     ]) ?>
+                    <div class="row">
+                        <div class="col-md-5">
+                            Beer Abv:
+                        </div>
+                        <div class="col-md-7">
+                            <?=
+                            Slider::widget(
+                                [
+                                    'name'=>'rating_2',
+                                    'value'=> $model->beer_abv,
+                                    'sliderColor' => Slider::TYPE_PRIMARY,
+                                    'handleColor' => Slider::TYPE_PRIMARY,
+                                    'pluginOptions' => [
+                                        'min' => 2,
+                                        'max' => 12,
+                                        'step' => 0.01,
+                                        'precision' => 2,
+                                        'tooltip' => 'always',
+                                        'value' => 3.0,
+                                    ],
+                                    'options'=>['disabled'=>true]
+                                ]);
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -67,6 +92,34 @@ $this->params['breadcrumbs'][] = $this->title;
                             'beer_ibu',
                         ],
                     ]) ?>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3>Rating Score:</h3>
+                        </div>
+                        <div class="col-md-7">
+                            <?=
+                            Slider::widget(
+                                [
+                                    'name'=>'rating_2',
+                                    'value'=> $model->beer_ibu,
+                                    'sliderColor' => Slider::TYPE_PRIMARY,
+                                    'handleColor' => Slider::TYPE_PRIMARY,
+                                    'pluginOptions' => [
+                                        'min' => 5,
+                                        'max' => 120,
+                                        'step' => 1,
+                                        'tooltip' => 'always',
+                                        'value' => 3.0,
+                                        'selection' => 'none',
+                                        'ticks' => [0, 60, 120],
+                                        'ticks_labels' => ["low", "med", "high"],
+                                    ],
+                                    'options'=>['disabled'=>true]
+                                ]);
+                            ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
                 <!--    <?//= DetailView::widget([
