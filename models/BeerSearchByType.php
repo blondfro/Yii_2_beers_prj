@@ -17,9 +17,34 @@ class BeerSearchByType extends BeerSearch
     public function rules()
     {
         return [
-            [['id', 'beer_type_id', 'beer_ibu', 'brewery_id', 'venue_id'], 'integer'],
-            [['beer_name', 'beer_type', 'comment', 'created_at', 'checkin_url', 'beer_url'], 'safe'],
-            [['beer_abv', 'rating_score'], 'number'],
+            [
+                [
+                    'id',
+                    'beer_type_id',
+                    'beer_ibu',
+                    'brewery_id',
+                    'venue_id',
+                ], 'integer',
+            ],
+
+            [
+                [
+                    'beer_name',
+                    'beer_type',
+                    'comment',
+                    'created_at',
+                    'checkin_url',
+                    'beer_url',
+                ], 'safe',
+            ],
+
+            [
+                [
+                    'beer_abv',
+                    'rating_score',
+                ], 'number',
+            ],
+
         ];
     }
 
@@ -43,9 +68,9 @@ class BeerSearchByType extends BeerSearch
     public function search($params)
     {
         $query = Beer::find()
-            ->joinWith('beerType')
-            ->joinWith('brewery')
-            ->joinWith('venue')/* this is name of the relation in Beers model */
+            // ->joinWith('beerType')
+            // ->joinWith('brewery')
+            // ->joinWith('venue')/* this is name of the relation in Beers model */
 
             /* Custom filter for just this type of beer */
             ->where(['beer_type_id' => $params['id']]);
@@ -78,7 +103,7 @@ class BeerSearchByType extends BeerSearch
 
             /* by default, sort resultset by beer_name ASC */
             'defaultOrder' => [
-                'beer_name' => SORT_ASC,
+                'beer_name' => SORT_DESC,
             ],
 
         ]);

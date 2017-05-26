@@ -56,17 +56,9 @@ class BeerTypeController extends Controller
         $searchModel = new BeerSearchByType();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        /*
-        $queryBeersOfThisType = new ActiveDataProvider([
-            'query' => Beer::find()
-                ->where(['beer_type_id' => $id]),
-        ]);
-        */
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'beersOfThisType' => $dataProvider,
-            // 'beersOfThisType' => $queryBeersOfThisType,
+            'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
         ]);
     }
