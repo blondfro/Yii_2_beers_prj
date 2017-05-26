@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\widgets\ActiveForm;
 use kartik\slider\Slider;
 
 
@@ -15,7 +14,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Beers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="beer-view">
-    <?php $form = ActiveForm::begin(); ?>
 
     <div class="panel panel-primary">
         <div class="panel-heading small">
@@ -70,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                 </div>
-                <div class="col-md-4" style="padding-top: 20px">
+                <div class="col-md-4">
                 <!--    <?//= DetailView::widget([
 //                        'model' => $model,
 //                        'attributes' => [
@@ -79,24 +77,39 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    ])
                 ?>
                     -->
-                    <?= $form->field($model, 'rating_score')
-                        ->widget(Slider::classname(), [
-                            'sliderColor' => Slider::TYPE_PRIMARY,
-                            'handleColor' => Slider::TYPE_PRIMARY,
-                            'pluginOptions' => [
-                                'min' => 0,
-                                'max' => 5,
-                                'step' => 0.5,
-                                'precision' => 2,
-                                'tooltip' => 'always',
-                                'value' => 3.0,
-                                'selection' => 'before',
-                            ],
-                            'options' => ['disabled'=>true],
-                        ])
-                    ?>
+                    <div class="row">
+                        <div class="col-md-5">
+                            Rating Score:
+                        </div>
+                        <div class="col-md-7">
+                            <?=
+                            Slider::widget(
+                                [
+                                    'name'=>'rating_2',
+                                    'value'=> $model->rating_score,
+                                    'sliderColor' => Slider::TYPE_PRIMARY,
+                                    'handleColor' => Slider::TYPE_PRIMARY,
+                                    'pluginOptions'=>[
+                                        'handle'=>'square',
+                                        'min' => 0,
+                                        'max' => 5,
+                                        'step' => 0.5,
+                                        'precision' => 2,
+                                        'tooltip' => 'always',
+                                        'value' => 3.0,
+                                        'selection' => 'before',
+                                    ],
+                                    'options'=>['disabled'=>true]
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+
                 </div>
 
+                <div class="col-md-4">
+
+                </div>
             </div>
 
             <div class="row">
