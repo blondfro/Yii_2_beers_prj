@@ -39,6 +39,27 @@ class BeerType extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Beer Type',
+            'beerCount' => '# of Beers',
         ];
     }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBeers()
+    {
+        return $this->hasMany(Beer::className(), ["beer_type_id" => "id"]);
+    }
+
+
+    /**
+     * Returns the number of beers of the given type
+     * @return int|string
+     */
+    public function getBeerCount()
+    {
+        return $this->hasMany(Beer::className(), ["beer_type_id" => "id"])->count();
+    }
+
 }

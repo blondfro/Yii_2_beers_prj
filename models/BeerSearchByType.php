@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
 /**
  * BeerSearch represents the model behind the search form about `app\models\Beer`.
  */
-class BeerSearch extends Beer
+class BeerSearchByType extends BeerSearch
 {
     /**
      * @inheritdoc
@@ -17,9 +17,34 @@ class BeerSearch extends Beer
     public function rules()
     {
         return [
-            [['id', 'beer_type_id', 'beer_ibu', 'brewery_id', 'venue_id'], 'integer'],
-            [['beer_name', 'beer_type', 'comment', 'created_at', 'checkin_url', 'beer_url'], 'safe'],
-            [['beer_abv', 'rating_score'], 'number'],
+            [
+                [
+                    'id',
+                    'beer_type_id',
+                    'beer_ibu',
+                    'brewery_id',
+                    'venue_id',
+                ], 'integer',
+            ],
+
+            [
+                [
+                    'beer_name',
+                    'beer_type',
+                    'comment',
+                    'created_at',
+                    'checkin_url',
+                    'beer_url',
+                ], 'safe',
+            ],
+
+            [
+                [
+                    'beer_abv',
+                    'rating_score',
+                ], 'number',
+            ],
+
         ];
     }
 
@@ -43,9 +68,12 @@ class BeerSearch extends Beer
     public function search($params)
     {
         $query = Beer::find()
-            ->joinWith('beerType')
-            ->joinWith('brewery')
-            ->joinWith('venue'); /* this is name of the relation in Beers model */
+            // ->joinWith('beerType')
+            // ->joinWith('brewery')
+            // ->joinWith('venue')/* this is name of the relation in Beers model */
+
+            /* Custom filter for just this type of beer */
+            ->where(['beer_type_id' => $params['id']]);
 
 
         // add conditions that should always apply here
@@ -75,13 +103,10 @@ class BeerSearch extends Beer
 
             /* by default, sort resultset by beer_name ASC */
             'defaultOrder' => [
-                'beer_name' => SORT_ASC,
+                'beer_name' => SORT_DESC,
             ],
 
         ]);
-
-
-
 
 
         $this->load($params);
