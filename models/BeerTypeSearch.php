@@ -42,8 +42,9 @@ class BeerTypeSearch extends BeerType
     public function search($params)
     {
         $query = BeerType::find()
+            ->joinWith('beers')
             ->from("beer_type")
-            ->select(["beer_type.*", "(SELECT COUNT(beers.id) FROM beers WHERE beers.beer_type_id = beer_type.id) beerCount"])
+            ->select(["beer_type.*", "(SELECT COUNT(beers.id) FROM beers WHERE beers.beer_type_id = beer_type.id) AS beerCount"])
             ->groupBy("beer_type.id");
 
 
@@ -56,7 +57,7 @@ class BeerTypeSearch extends BeerType
 
         $dataProvider->setSort([
             'attributes' => [
-                'beer_name',
+                'name',
                 'beerCount',
             ],
 
