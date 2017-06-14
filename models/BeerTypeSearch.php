@@ -63,7 +63,7 @@ class BeerTypeSearch extends BeerType
 
             /* by default, sort resultset by beer_name ASC */
             'defaultOrder' => [
-                'beer_name' => SORT_ASC,
+                'name' => SORT_ASC,
             ],
 
         ]);
