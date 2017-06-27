@@ -19,7 +19,7 @@ use kartik\slider\Slider;
     <div class="panel panel-primary">
         <div class="panel-heading">Beer Details</div>
         <div class="panel-body">
-            <div class="row">
+            <div class="row" style="padding-top: 15px; padding-bottom: 10px">
                 <div class="col-md-4">
                     <?= $form->field($model, 'beer_name')
                         ->textInput(['maxlength' => true])
@@ -58,7 +58,7 @@ use kartik\slider\Slider;
                     ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 15px; padding-bottom: 10px">
                 <div class="col-md-4">
                     <?= $form->field($model, 'beer_ibu')
                         ->widget(Slider::classname(), [
@@ -96,7 +96,7 @@ use kartik\slider\Slider;
                     ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 15px; padding-bottom: 10px">
                 <div class="col-md-8">
                     <?= $form->field($model, 'comment')
                         ->textInput([
