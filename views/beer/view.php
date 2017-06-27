@@ -5,7 +5,6 @@ use yii\widgets\DetailView;
 use kartik\slider\Slider;
 
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Beer */
 
@@ -22,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="panel-body">
-            <div class="row">
+            <div class="row" style="padding-bottom: 10px; padding-top: 15px">
                 <div class="col-md-4">
                     <?= DetailView::widget([
                         'model' => $model,
@@ -50,23 +49,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                 </div>
-                <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'beer_abv'
-                        ],
-                    ]) ?>
+                <div class="col-md-4 text-center">
+
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5 col-md-pull-1">
                             <h5 style="font-weight: bold">Beer Abv</h5>
                         </div>
-                        <div class="col-md-7">
+                        <div class=" col-md-pull-1 slider slider-horizontal">
                             <?=
                             Slider::widget(
                                 [
-                                    'name'=>'rating_2',
-                                    'value'=> $model->beer_abv,
+                                    'name' => 'rating_2',
+                                    'value' => $model->beer_abv,
                                     'sliderColor' => Slider::TYPE_PRIMARY,
                                     'handleColor' => Slider::TYPE_PRIMARY,
                                     'pluginOptions' => [
@@ -77,32 +71,28 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'tooltip' => 'always',
                                         'value' => 3.0,
                                     ],
-                                    'options'=>['disabled'=>true]
+                                    'options' => ['disabled' => true]
                                 ]);
                             ?>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'beer_ibu',
-                        ],
-                    ]) ?>
-
+            <div class="row" style="padding-bottom: 10px; padding-top: 15px">
+                <div class="col-md-4 text-center">
                     <div class="row">
-                        <div class="col-md-5">
+
+                        <div class="col-md-5 col-md-pull-1">
                             <h5 style="font-weight: bold">Beer ibu</h5>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 col-md-pull-1 slider
+                        slider-horizontal">
                             <?=
                             Slider::widget(
                                 [
-                                    'name'=>'rating_2',
-                                    'value'=> $model->beer_ibu,
+                                    'name' => 'rating_2',
+                                    'value' => $model->beer_ibu,
                                     'sliderColor' => Slider::TYPE_PRIMARY,
                                     'handleColor' => Slider::TYPE_PRIMARY,
                                     'pluginOptions' => [
@@ -115,35 +105,29 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'ticks' => [0, 60, 120],
                                         'ticks_labels' => ["low", "med", "high"],
                                     ],
-                                    'options'=>['disabled'=>true]
+                                    'options' => ['disabled' => true]
                                 ]);
                             ?>
                         </div>
                     </div>
+
                 </div>
-                <div class="col-md-4">
-                <!--    <?//= DetailView::widget([
-//                        'model' => $model,
-//                        'attributes' => [
-//                            'rating_score',
-//                        ],
-//                    ])
-                ?>
-                    -->
+                <div class="col-md-4 text-center">
                     <div class="row">
                         <div class="col-md-5">
                             <h5 style="font-weight: bold">Rating Score: </h5>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 col-md-pull-1 slider
+                        slider-horizontal">
                             <?=
                             Slider::widget(
                                 [
-                                    'name'=>'rating_2',
-                                    'value'=> $model->rating_score,
+                                    'name' => 'rating_2',
+                                    'value' => $model->rating_score,
                                     'sliderColor' => Slider::TYPE_PRIMARY,
                                     'handleColor' => Slider::TYPE_PRIMARY,
-                                    'pluginOptions'=>[
-                                        'handle'=>'square',
+                                    'pluginOptions' => [
+                                        'handle' => 'square',
                                         'min' => 0,
                                         'max' => 5,
                                         'step' => 0.5,
@@ -152,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'value' => 3.0,
                                         'selection' => 'before',
                                     ],
-                                    'options'=>['disabled'=>true]
+                                    'options' => ['disabled' => true]
                                 ]);
                             ?>
                         </div>
@@ -165,7 +149,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="padding-bottom: 10px; padding-top: 15px">
                 <div class="col-md-8">
                     <?= DetailView::widget([
                         'model' => $model,
