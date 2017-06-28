@@ -41,7 +41,15 @@ $this->params['breadcrumbs'][] = $this->title;
         // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'name',
+//            'name',
+            [
+                'attribute' => 'name',
+                'value' => function ($data) {
+                    return Html::a($data->name, ['brewery/view', 'id' => $data->id]);
+                },
+                'format' => 'html',
+            ],
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
