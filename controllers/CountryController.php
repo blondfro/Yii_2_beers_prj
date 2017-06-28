@@ -8,6 +8,8 @@ use app\models\BeerCountrySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Brewery;
+use yii\data\ActiveDataProvider;
 
 /**
  * CountryController implements the CRUD actions for Country model.
@@ -51,8 +53,17 @@ class CountryController extends Controller
      */
     public function actionView($id)
     {
+        // this adds in the ability to query the beers table using the venue_id field.
+        $queryBreweriesOfThisType = new ActiveDataProvider([
+            'query' => Brewery::find()
+                ->where(['countryId' => $id]),
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+
+            //this sets up the value of the var breweriesOfThisType.
+            'breweriesOfThisType' => $queryBreweriesOfThisType,
         ]);
     }
 

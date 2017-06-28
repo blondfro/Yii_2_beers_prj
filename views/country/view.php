@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Country */
@@ -33,6 +35,19 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
+    <!--    this adde in the beers that are available at this venue. -->
+    <?= GridView::widget([
+        'dataProvider' => $breweriesOfThisType,
+        // 'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'name',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
