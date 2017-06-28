@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <!--    this adde in the beers that are available at this venue. -->
+    <!--    this adde in the beers and types that are available from this brewery. -->
     <?= GridView::widget([
         'dataProvider' => $beersOfThisType,
         // 'filterModel' => $searchModel,
@@ -70,6 +70,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'beer_name',
                 'value' => function ($data) {
                     return Html::a($data->beer_name, ['beer/view', 'id' => $data->id]);
+                },
+                'format' => 'html',
+            ],
+            [
+                'attribute' => 'beer_type',
+                'value' => function ($data) {
+                    return Html::a($data->beer_type, ['beer/view', 'id' => $data->id]);
                 },
                 'format' => 'html',
             ],

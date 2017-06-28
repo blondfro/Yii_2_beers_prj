@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Beer;
+use app\models\BeerType;
 use yii\data\ActiveDataProvider;
 
 /**
