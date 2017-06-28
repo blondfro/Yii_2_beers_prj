@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Brewery */
@@ -57,6 +58,25 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+    <!--    this adde in the beers that are available at this venue. -->
+    <?= GridView::widget([
+        'dataProvider' => $beersOfThisType,
+        // 'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+//            'name',
+            [
+                'attribute' => 'beer_name',
+                'value' => function ($data) {
+                    return Html::a($data->beer_name, ['beer/view', 'id' => $data->id]);
+                },
+                'format' => 'html',
+            ],
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
