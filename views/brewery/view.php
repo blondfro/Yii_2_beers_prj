@@ -62,6 +62,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <!--    this adde in the beers and types that are available from this brewery. -->
     <?= GridView::widget([
         'dataProvider' => $beersOfThisType,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            [
+                'attribute' => 'beer_type',
+                'value' => function ($data) {
+                    return Html::a($data->beerType->name, ['beer-type/view', 'id' => $data->beer_type_id]);
+                },
+                'format' => 'html',
+            ],
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+
+    <!--    this adde in the beers and types that are available from this brewery. -->
+    <?= GridView::widget([
+        'dataProvider' => $beersOfThisType,
         // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -70,13 +89,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'beer_name',
                 'value' => function ($data) {
                     return Html::a($data->beer_name, ['beer/view', 'id' => $data->id]);
-                },
-                'format' => 'html',
-            ],
-            [
-                'attribute' => 'beer_type',
-                'value' => function ($data) {
-                    return Html::a($data->beer_type, ['beer/view', 'id' => $data->id]);
                 },
                 'format' => 'html',
             ],

@@ -57,7 +57,7 @@ class BreweryController extends Controller
         // this adds in the ability to query the beers table using the venue_id field.
         $queryBeersOfThisType = new ActiveDataProvider([
             'query' => Beer::find()
-                ->where(['id' => $id]),
+                ->where(['brewery_id' => $id]),
         ]);
 
         return $this->render('view', [
