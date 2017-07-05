@@ -59,43 +59,61 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <!--    this adde in the beers and types that are available from this brewery. -->
-    <?= GridView::widget([
-        'dataProvider' => $beersOfThisType,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <div class="panel panel-info">
+        <div class="panel-heading">Product List</div>
+        <div class="panel-body">
+           <div class="row">
+               <div class="col-md-12">
+                   <!--    this adde in the beers types that are available from this brewery. -->
+                   <?= GridView::widget([
+                       'dataProvider' => $beersOfThisType,
+                       'columns' => [
+                           ['class' => 'yii\grid\SerialColumn'],
 
-            [
-                'attribute' => 'beer_type',
-                'value' => function ($data) {
-                    return Html::a($data->beerType->name, ['beer-type/view', 'id' => $data->beer_type_id]);
-                },
-                'format' => 'html',
-            ],
+                           [
+                               'attribute' => 'beer_type',
+                               'value' => function ($data) {
+                                   return Html::a($data->beerType->name, ['beer-type/view', 'id' => $data->beer_type_id]);
+                               },
+                               'format' => 'html',
+                           ],
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                           ['class' => 'yii\grid\ActionColumn'],
+                       ],
+                   ]); ?>
+               </div>
 
+           </div>
 
-    <!--    this adde in the beers and types that are available from this brewery. -->
-    <?= GridView::widget([
-        'dataProvider' => $beersOfThisType,
-        // 'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            <div class="row">
+                <div class="col-md-12">
+                    <!--    this adde in the beers that are available from this brewery. -->
+                    <?= GridView::widget([
+                        'dataProvider' => $beersOfThisType,
+                        // 'filterModel' => $searchModel,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 //            'name',
-            [
-                'attribute' => 'beer_name',
-                'value' => function ($data) {
-                    return Html::a($data->beer_name, ['beer/view', 'id' => $data->id]);
-                },
-                'format' => 'html',
-            ],
+                            [
+                                'attribute' => 'beer_name',
+                                'value' => function ($data) {
+                                    return Html::a($data->beer_name, ['beer/view', 'id' => $data->id]);
+                                },
+                                'format' => 'html',
+                            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
