@@ -99,7 +99,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id',
             'beer_name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'controller' => 'beer',
+                'class' => 'yii\grid\ActionColumn',
+            ],
         ],
     ]); ?>
 
