@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <?php Html::tag('h4', "These are all the beers available at this venue:"); ?>
+    <?= Html::tag('h4', "These are all the beers available at this venue:"); ?>
     <!--    this displays all beers that are available at this venue -->
     <?= GridView::widget([
         'dataProvider' => $beersOfThisType,
