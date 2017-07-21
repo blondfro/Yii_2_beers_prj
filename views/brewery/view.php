@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Brewery */
@@ -64,22 +65,44 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="panel-body">
            <div class="row">
                <div class="col-md-12">
-                   <!--    this adde in the beers types that are available from this brewery. -->
+                   <?= Html::tag('h4', "All types of beers brewed by this brewery:") ?>
+                   <!--    this adds in the beers types that are available from this brewery. -->
                    <?= GridView::widget([
-                       'dataProvider' => $beersOfThisType,
+                       'dataProvider' => $beersOfThisTypeDistinct,
                        'columns' => [
                            ['class' => 'yii\grid\SerialColumn'],
 
                            [
-                               'attribute' => 'beer_type',
+                               'attribute' => 'beer_type_id',
+                               'label' => 'Beer Type',
                                'value' => function ($data) {
                                    return Html::a($data->beerType->name, ['beer-type/view', 'id' => $data->beer_type_id]);
                                },
                                'format' => 'html',
                            ],
 
-                           ['class' => 'yii\grid\ActionColumn'],
+                           [
+                               'class' => 'yii\grid\ActionColumn',
+                               'controller' => 'beerType',
+
+                               'template' => '{james} {update} {delete}',
+                               'buttons' => [
+                                   'james' => function ($url, $model) {
+                                       $url = Url::to(['beer-type/view', 'id' => $model->beer_type_id]);
+                                       return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => 'View']);
+                                   },
+                                   'update' => function ($url, $model) {
+                                       $url = Url::to(['beer-type/update', 'id' => $model->beer_type_id]);
+                                       return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => 'Update']);
+                                   },
+                                   'delete' => function ($url, $model) {
+                                       $url = Url::to(['beer-type/delete', 'id' => $model->beer_type_id]);
+                                       return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, ['title' => 'Delete']);
+                                   },
+                               ],
+                           ],
                        ],
+
                    ]); ?>
                </div>
 
@@ -87,7 +110,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="row">
                 <div class="col-md-12">
-                    <!--    this adde in the beers that are available from this brewery. -->
+                    <?= Html::tag('h4', "All beers brewed by this brewery:") ?>
+                    <!--    this adds in the beers that are available from this brewery. -->
                     <?= GridView::widget([
                         'dataProvider' => $beersOfThisType,
                         // 'filterModel' => $searchModel,
@@ -102,7 +126,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'html',
                             ],
 
-                            ['class' => 'yii\grid\ActionColumn'],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'controller' => 'beer',
+                            ],
                         ],
                     ]); ?>
                 </div>

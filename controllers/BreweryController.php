@@ -54,10 +54,21 @@ class BreweryController extends Controller
      */
     public function actionView($id)
     {
+
+
         // this adds in the ability to query the beers table using the venue_id field.
         $queryBeersOfThisType = new ActiveDataProvider([
             'query' => Beer::find()
-                ->where(['brewery_id' => $id]),
+                ->where(['brewery_id' => $id])
+                ->select('id, beer_name')
+        ]);
+
+
+        $queryBeersOfThisTypeDistinct = new ActiveDataProvider([
+            'query' => Beer::find()
+                ->where(['brewery_id' => $id])
+                ->select('beer_type_id')
+                ->distinct(true)
         ]);
 
         return $this->render('view', [
@@ -65,6 +76,7 @@ class BreweryController extends Controller
 
             //this sets up the value of the var breweriesOfThisType.
             'beersOfThisType' => $queryBeersOfThisType,
+            'beersOfThisTypeDistinct' => $queryBeersOfThisTypeDistinct,
         ]);
     }
 
